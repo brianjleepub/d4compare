@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "id": "paladin_hammerkuna_v1_1_brian",
+    "name": "Paladin - Blessed Hammer (Hammerkuna)",
+    "version": 1.1,
+    "source": "Mobalytics Mekuna - Blessed Hammer (Hammerkuna) + user stats",
+    "difficulty": "Torment 4",
+    "mode_presets": ["speedfarm", "pit_push"]
+  },
+
+  "requirements": {
+    "hard_required_uniques": [
+      { "slot": "weapon", "name": "Herald's Morningstar" },
+      { "slot": "offhand", "name": "Herald of Zakarum" },
+      { "slot": "ring2", "name": "Argent Veil" }
+    ],
+    "soft_required_uniques": [
+      { "slot": "helm", "name": "Heir of Perdition" },
+      { "slot": "chest", "name": "Shroud of False Death" },
+      { "slot": "ring1", "name": "Ring of Starless Skies" }
+    ],
+    "hard_required_aspects": [
+      { "slot": "amulet", "name": "Aspect of Holy Punishment" },
+      { "slot": "ring1", "name": "Aspect of Ascension" }
+    ],
+    "hard_required_implicits": [
+      {
+        "slot": "boots",
+        "match_any": [
+          "Attacks reduce Evade's Cooldown",
+          "Attacks Reduce Evade's Cooldown"
+        ],
+        "reason": "Perma-evade / Arbiter loop depends on this implicit."
+      }
+    ]
+  },
+
+  "current_stats": {
+    "crit_chance_pct": 73.9,
+    "attack_speed_bonus_pct": 36.3,
+    "block_chance_pct": 84.0,
+    "cooldown_reduction_pct": 28.2,
+    "movement_speed_pct": 186.2,
+    "life": 9334,
+    "strength": 3133,
+    "armor": 65680,
+
+    "resistance_values_raw": {
+      "physical": 2190,
+      "fire": 5981,
+      "lightning": 5981,
+      "cold": 2190,
+      "poison": 7837,
+      "shadow": 4047
+    },
+
+    "toughness_overview": {
+      "toughness_total": 233688,
+      "by_type": {
+        "physical": 163438,
+        "fire": 271854,
+        "cold": 163438,
+        "lightning": 271854,
+        "poison": 307130,
+        "shadow": 224417
+      }
+    },
+
+    "notes": [
+      "Movement speed, strength, and life are above recommended thresholds; prioritize AS/Crit/Block/CDR.",
+      "Lowest effective toughness is physical/cold; defensive rolls that improve these are more valuable in T4."
+    ]
+  },
+
+  "targets": {
+    "stat_thresholds": {
+      "blessed_hammer_ranks_total": {
+        "target": 25,
+        "weight_below": 6.0,
+        "weight_above": 1.0
+      },
+
+      "crit_chance_pct": {
+        "target": 100,
+        "weight_below": 5.0,
+        "weight_above": 0.4
+      },
+      "block_chance_pct": {
+        "target": 100,
+        "weight_below": 5.0,
+        "weight_above": 0.4
+      },
+
+      "attack_speed_bonus_pct": {
+        "target": 70,
+        "weight_below": 5.0,
+        "weight_above": 0.7
+      },
+      "cooldown_reduction_pct": {
+        "target": 40,
+        "weight_below": 3.8,
+        "weight_above": 1.0
+      },
+
+      "movement_speed_pct": {
+        "target": 160,
+        "weight_below": 1.8,
+        "weight_above": 0.2
+      },
+      "life": { "target": 8000, "weight_below": 2.8, "weight_above": 0.6 },
+      "strength": { "target": 1500, "weight_below": 1.5, "weight_above": 0.2 }
+    },
+
+    "defense_emphasis": {
+      "weak_types": ["physical", "cold"],
+      "multiplier_for_weak_types": 1.15
+    }
+  },
+
+  "scoring": {
+    "mode_multipliers": {
+      "speedfarm": { "offense": 1.15, "defense": 0.85, "utility": 1.05 },
+      "pit_push": { "offense": 0.95, "defense": 1.3, "utility": 1.0 }
+    },
+
+    "slot_weights": {
+      "weapon": 1.35,
+      "offhand": 1.15,
+      "amulet": 1.2,
+      "ring1": 1.1,
+      "ring2": 1.15,
+      "helm": 1.05,
+      "chest": 1.05,
+      "gloves": 1.1,
+      "pants": 1.0,
+      "boots": 1.05
+    },
+
+    "affix_weights": {
+      "offense": {
+        "+ranks_to_blessed_hammer": 6.0,
+        "+ranks_to_core_skills": 4.5,
+        "crit_chance_pct": 4.2,
+        "crit_damage_pct": 3.0,
+        "attack_speed_pct": 3.6,
+        "vulnerable_damage_pct": 2.6,
+        "damage_mult_generic": 2.5
+      },
+      "defense": {
+        "armor": 2.0,
+        "max_life": 2.0,
+        "damage_reduction_pct": 3.2,
+        "all_resistance_pct": 2.2,
+        "block_chance_pct": 3.8,
+        "physical_resistance_pct": 2.6,
+        "cold_resistance_pct": 2.6
+      },
+      "utility": {
+        "cooldown_reduction_pct": 3.2,
+        "resource_generation_pct": 2.4,
+        "faith_per_second": 2.0,
+        "movement_speed_pct": 0.8,
+        "evade_cooldown_reduction": 4.0
+      }
+    },
+
+    "rules": {
+      "hard_fail_penalties": {
+        "missing_hard_required_unique": -100000,
+        "missing_hard_required_aspect": -50000,
+        "missing_hard_required_implicit": -50000
+      },
+      "soft_fail_penalties": {
+        "missing_soft_required_unique": -2500
+      },
+      "stat_cap_logic": {
+        "use_threshold_diminishing_returns": true,
+        "diminish_above_target": true
+      }
+    }
+  },
+
+  "ocr": {
+    "expected_language": "en",
+    "fuzzy_match": true,
+    "synonyms": {
+      "+ranks_to_blessed_hammer": ["to Blessed Hammer", "to Blessed  Hammer"],
+      "+ranks_to_core_skills": ["to Core Skills", "to Core  Skills"],
+
+      "crit_chance_pct": ["Critical Strike Chance"],
+      "crit_damage_pct": ["Critical Strike Damage"],
+      "attack_speed_pct": ["Attack Speed"],
+      "vulnerable_damage_pct": ["Vulnerable Damage"],
+
+      "cooldown_reduction_pct": ["Cooldown Reduction"],
+      "resource_generation_pct": ["Resource Generation"],
+      "movement_speed_pct": ["Movement Speed"],
+
+      "max_life": ["Maximum Life"],
+      "armor": ["Armor"],
+      "block_chance_pct": ["Block Chance"],
+
+      "physical_resistance_pct": ["Physical Resistance"],
+      "cold_resistance_pct": ["Cold Resistance"],
+      "all_resistance_pct": [
+        "Resistance to All Elements",
+        "Resistance to All Elements %",
+        "Resistance to All Elements"
+      ]
+    }
+  }
+}
